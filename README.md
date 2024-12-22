@@ -1,5 +1,11 @@
 # 数据库原理大作业
-
+## 系统环境
+```shell
+Distributor ID: Ubuntu
+Description:    Ubuntu 22.04.4 LTS
+Release:        22.04
+Codename:       jammy
+```
 ## 功能展示
 
 登录界面
