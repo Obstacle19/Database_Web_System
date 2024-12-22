@@ -25,13 +25,24 @@
     <caption>
         <div id="caption">
             <div class="d-flex align-items-center caption-upper">
-                <h4 class="p-2" id="table-title">Colleges Information</h4>
+                <h4 class="p-2" id="table-title">高校信息</h4>
+
+                <style>
+                    #table-title {
+                        font-family: 'SimSun', '华文中宋', serif; /* 设置字体为华文中宋 */
+                        font-size: 2em; /* 调整字体大小 */
+                        color: gray; /* 设置字体颜色为灰色 */
+                        font-weight: bold; /* 设置字体为加粗 */
+                        padding: 10px; /* 内边距 */
+                        text-align: center; /* 居中对齐 */
+                    }
+                </style>
                 <button class="btn btn-primary" id="addNew" data-bs-toggle="modal" data-bs-target="#addCollegeForm"><img src="../static/images/addcollegeICON.png" alt="" id="addcollegeICON"></button>
             </div>
             <div>
                 <form class="pt-3 pb-3 d-flex align-items-center caption-lower" method="post" action="{{url_for('college.search')}}">
                     <select id="field" name="field" class="form-select p-2">
-                        <option value="select">Select Field</option>
+                        <option value="select" style="color: gray; font-weight: bold;">选项</option>
                         <option value="code">College Code</option>
                         <option value="name">College Name</option>
                         <option value="coursecount">Course Count</option>
@@ -89,7 +100,7 @@
   
               <div class="modal-header">
                   <div class="d-flex">
-                      <img src="../static/images/SSISlogo.png" alt="SSIS logo">
+                      <img src="../static/images/hnu_logo.png" alt="SSIS logo">
                       <h5 class="modal-title" id="courseformtitle">Edit College</h5>
                   </div>
                   <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>

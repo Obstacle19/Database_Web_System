@@ -1,9 +1,22 @@
 @import 
 url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-body{
-    background-image: url('../images/MSUIITlogo.png');
-    background-repeat: no-repeat;
-    background-size: 800px;
+body {
+    position: relative; /* 必须设置相对定位 */
+    background-color: white; /* 可选，设置背景色 */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/hnu_gate.jpg');
+    background-repeat: no-repeat; /* 不重复 */
+    background-size: cover; /* 使图片铺满整个背景 */
+    opacity: 0.5; /* 设置背景图片的不透明度 */
+    z-index: -1; /* 确保伪元素在内容后面 */
 }
 
 .logout-btn{
@@ -332,3 +345,10 @@ footer{
     text-align: center;
 }
 
+footer {
+    position: absolute; /* 使用绝对定位 */
+    bottom: 0; /* 固定在底部 */
+    left: 0; /* 左侧对齐 */
+    right: 0; /* 右侧对齐 */
+    text-align: center; /* 使footer文本居中 */
+}

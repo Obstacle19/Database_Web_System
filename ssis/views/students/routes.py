@@ -116,8 +116,9 @@ def search() -> str:
 
 @student.route('/students/add', methods=['GET', 'POST'])
 def add() -> str:
+    cloud_link = None  # 初始化 cloud_link
     if request.method == 'POST':
-        image = request.files['selected-image']
+        image = request.files.get('selected-image')  # 使用 get() 以避免 KeyError
         try:
             cloud_link = save_image(image)
         except Exception as e:
@@ -132,11 +133,11 @@ def add() -> str:
             'gender': request.form.get('gender'),
             'yearlevel': request.form.get('yearlevel'),
             'course': request.form.get('course'),
-            'photo': cloud_link
+            'photo': cloud_link  # cloud_link 可能是 None
         }
         added = add_student_to_db(student)
         if added:
-            flash(f'{student["firstname"]} is added succesfully!', 'success')
+            flash(f'{student["firstname"]} is added successfully!', 'success')
         else:
             flash(f'{student["firstname"]} cannot be added. Make sure the ID is unique.', 'info')
         return redirect(url_for('student.students'))
@@ -144,47 +145,34 @@ def add() -> str:
         courses = Course().get_all(paginate=False)
         colleges = College().get_all(paginate=False)
         return render_template('/student/form.html', 
-                                data = [[],courses,colleges])
+                                data = [[], courses, colleges])
 
 
 
 @student.route('/students/update/<string:id>', methods=['GET', 'POST'])
 def update(id: str) -> str:
+    cloud_link = None  # 初始化 cloud_link
     if request.method == 'POST':
-        image = request.files['selected-image'+id]
-        cloud_link = ''
+        image = request.files.get('selected-image' + id)  # 使用 get() 以避免 KeyError
         try:
             cloud_link = save_image(image)
         except Exception as e:
             print("Can't save image")
             print(e)
-        
-        if cloud_link:
-            student = {
-            'id': id,
-            'firstname': request.form.get('firstname'),
-            'middlename': request.form.get('middlename'),
-            'lastname': request.form.get('lastname'),
-            'gender': request.form.get('gender'),
-            'yearlevel': request.form.get('yearlevel'),
-            'course': request.form.get('course'),
-            'photo' : cloud_link
-            }
-            update_student_record(student)
-        else:
-            student = {
-            'id': id,
-            'firstname': request.form.get('firstname'),
-            'middlename': request.form.get('middlename'),
-            'lastname': request.form.get('lastname'),
-            'gender': request.form.get('gender'),
-            'yearlevel': request.form.get('yearlevel'),
-            'course': request.form.get('course'),
-            'photo' : cloud_link
-            }
-            update_student_record(student)
 
-        flash(f"{student['firstname']}'s data has been changed succesfully!", 'info')
+        student = {
+            'id': id,
+            'firstname': request.form.get('firstname'),
+            'middlename': request.form.get('middlename'),
+            'lastname': request.form.get('lastname'),
+            'gender': request.form.get('gender'),
+            'yearlevel': request.form.get('yearlevel'),
+            'course': request.form.get('course'),
+            'photo': cloud_link  # cloud_link 可能是 None
+        }
+        update_student_record(student)
+
+        flash(f"{student['firstname']}'s data has been changed successfully!", 'info')
         return redirect(url_for('student.students'))
     else:
         return redirect(url_for('student.students'))
