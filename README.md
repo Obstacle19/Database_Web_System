@@ -65,7 +65,7 @@ touch .env
 打开这个 `.env` 文件，输入以下内容
 
 ```shell
-DB_HOST=your_database_host
+DB_HOST=your_database_host # 需要更改
 DB_NAME=ssisdb
 DB_USERNAME=your_database_username # 需要更改
 DB_PASSWORD=your_database_password # 需要更改
@@ -104,4 +104,5 @@ mysql > quit
 
 ```shell
 flask run
+# 如果是虚拟机直接运行，只能在本地打开。运行 flask run --host=0.0.0.0 可以在主机打开
 ```
