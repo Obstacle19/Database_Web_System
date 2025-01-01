@@ -59,7 +59,7 @@ pip install -r requirements.txt
 创建一个 `.env` 文件
 
 ```shell
-type nul > .env
+touch .env
 ```
 
 打开这个 `.env` 文件，输入以下内容
@@ -81,10 +81,10 @@ PHOTO_UPLOAD = cloud
 创建一个 `.flaskenv` 文件
 
 ```shell
-type nul > .flaskenv
+touch .flaskenv
 ```
 
-打开这个 `.flask` 文件，输入以下内容
+打开这个 `.flaskenv` 文件，输入以下内容
 
 ```shell
 FLASK_APP=ssis
