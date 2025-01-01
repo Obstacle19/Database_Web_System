@@ -49,7 +49,7 @@ git clone https://github.com/Obstacle19/Database_Web_System.git
 安装所需的依赖
 
 ```shell
-cd Web-based-SSIS
+cd Database_Web_System
 sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple virtualenv # 安装 virtualenv
 python3 -m venv flaskenv # 创建虚拟环境
 source flaskenv/bin/activate # 启用虚拟环境
